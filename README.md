@@ -1,5 +1,5 @@
 # random-sentence-generator
-Random sentence generator web componenet. Built with lit-element
+Random sentence generator web componenet. Built with lit-element (ported from https://github.com/irontiga/Polymer-random-sentence-generator)
 
 ## Usage
 ```html
@@ -16,7 +16,7 @@ Just include the component and use it :)
  - verb
  - interjection
  - adjective/adj
- Any of those keywords will be replaced with randomly generated words.
+Any of those keywords will be replaced with randomly generated words.
 
 ## Api
 Any time the template attribute is changed the sentence will be re-generated. A regeneration can be triggered with

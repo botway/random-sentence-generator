@@ -4,6 +4,8 @@ import WORDLISTS from './wordlists/wordlists.js'
 // Import the LitElement base class and html helper function
 import { LitElement, html } from 'lit-element'
 
+window.words = WORDLISTS
+
 // Extend the LitElement base class
 class RandomSentenceGenerator extends LitElement {
     /**
@@ -32,6 +34,11 @@ class RandomSentenceGenerator extends LitElement {
             },
             partsOfSpeechMap: {
                 type: Object
+            },
+            templateEntropy: {
+                type: Number,
+                reflect: true,
+                attribute: 'template-entropy'
             }
         }
     }
@@ -62,6 +69,9 @@ class RandomSentenceGenerator extends LitElement {
         if (changedProperties.has('template')) {
             this.generate()
         }
+        // if (changedProperties.has('templateEntropy')) {
+        //     this.
+        // }
     }
 
     _RNG (entropy) {
@@ -100,7 +110,10 @@ class RandomSentenceGenerator extends LitElement {
         const requiredEntropy = Math.log(words.length) / Math.log(2)
         const index = this._RNG(requiredEntropy) * words.length
 
-        return words[Math.floor(index)]
+        return {
+            word: words[Math.floor(index)],
+            entropy: words.length
+        }
     }
 
     generate () {
@@ -109,21 +122,24 @@ class RandomSentenceGenerator extends LitElement {
 
     parse (template) {
         const split = template.split(/[\s]/g)
-
+        let entropy = 1
         const final = split.map(word => {
             const lower = word.toLowerCase()
 
             this.partsOfSpeech.some(partOfSpeech => {
-                const partOfSpeechIndex = lower.indexOf(partOfSpeech)
+                const partOfSpeechIndex = lower.indexOf(partOfSpeech) // Check it exists
                 const nextChar = word.charAt(partOfSpeech.length)
 
                 if (partOfSpeechIndex === 0 && !(nextChar && (nextChar.match(/[a-zA-Z]/g) != null))) {
-                    word = this.getWord(partOfSpeech) + word.slice(partOfSpeech.length)
+                    const replacement = this.getWord(partOfSpeech)
+                    word = replacement.word + word.slice(partOfSpeech.length) // Append the rest of the "word" (punctuation)
+                    entropy = entropy * replacement.entropy
                     return true
                 }
             })
             return word
         })
+        this.templateEntropy = Math.log(entropy) / Math.log(8)
         console.log('parsing ' + template)
         return final.join(' ')
     }

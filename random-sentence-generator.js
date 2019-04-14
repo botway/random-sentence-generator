@@ -1,6 +1,6 @@
 'use strict'
 
-import WORDLISTS from './wordlists/wordlists.js'
+import * as WORDLISTS from './wordlists/wordlists.js'
 // Import the LitElement base class and html helper function
 import { LitElement, html } from 'lit-element'
 

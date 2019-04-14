@@ -18,7 +18,6 @@ Object.keys(directories).forEach(name => {
     // const file = data
     // Seems dumb to store words globally when not imported
     // Access via window.WORDLISTS.nouns etc. or import * as WORDLISTS from ".."
-    const file = `const WORDLISTS = ((typeof module !== "undefined" && module !== null) ? module.exports : void 0) || (window.WORDLISTS || (window.WORDSLISTS = {}))
-WORDLISTS.${name} = ${data}`
+    const file = `const ${name} = ${data}`
     fs.writeFile(name + '.js', file, () => {})
 })

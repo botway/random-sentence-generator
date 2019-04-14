@@ -5,7 +5,6 @@ Random sentence generator web componenet. Built with lit-element (ported from ht
 ```html
 <body>
     <random-sentence-generator id="myRandSentence" template="adjective noun verb adverb."></random-sentence-generator>
-    
     <script src="dist/random-sentence-generator.iife.js">
 </body>
 ```
@@ -19,7 +18,7 @@ Just include the component and use it :)
 Any of those keywords will be replaced with randomly generated words.
 
 ## Api
-Any time the template attribute is changed the sentence will be re-generated. A regeneration can be triggered with
+Any time the template attribute is changed the sentence will be re-generated. A regeneration can also be triggered with
 ```javascript
 document.getElementById('myRandSentence').generate()
 ```

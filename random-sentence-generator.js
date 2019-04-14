@@ -158,3 +158,5 @@ class RandomSentenceGenerator extends LitElement {
 }
 // Register the new element with the browser.
 customElements.define('random-sentence-generator', RandomSentenceGenerator)
+
+export { RandomSentenceGenerator, WORDLISTS }

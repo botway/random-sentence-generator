@@ -5,10 +5,21 @@ Random sentence generator web componenet. Built with lit-element (ported from ht
 ```html
 <body>
     <random-sentence-generator id="myRandSentence" template="adjective noun verb adverb."></random-sentence-generator>
-    <script src="dist/random-sentence-generator.iife.js">
+    <script src="dist/random-sentence-generator.iife.js"></script>
 </body>
 ```
 Just include the component and use it :)
+Or...
+```html
+...
+    <random-sentence-generator id="myRandSentence" template="adjective noun verb adverb."></random-sentence-generator>
+    <script type="module">
+        import "random-sentence-generator.js"
+        ...
+    </script>
+...
+```
+
 `template` can be any string. You can use any of the following parts of speech.
  - noun
  - adverb/adv

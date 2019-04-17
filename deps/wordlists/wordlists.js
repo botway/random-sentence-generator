@@ -1,4 +1,4 @@
-import { getPastTense } from '../deps/verb-past-tense.js'
+import { getPastTense } from '../verb-past-tense.js'
 
 import { verbs } from './verbs.js'
 export const verbed = new Proxy(verbs, {

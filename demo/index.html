@@ -21,6 +21,13 @@
         >
         </random-sentence-generator>
         <br>
+                <random-sentence-generator
+            template-entropy="1"
+            id="myRandSentence4"
+            template="Verb the adjective noun adverb and verb the adjective noun"
+        >
+        </random-sentence-generator>
+        <br>
         <button id="button">Regenerate</button>
         <br>
         <!-- <script src="../dist/random-sentence-generator.iife.js"></script> -->
@@ -28,9 +35,25 @@
         <script>
             const button = document.getElementById('button')
             const generators = document.querySelectorAll('random-sentence-generator')
-            button.onclick = () => {
-                generators.forEach(g => g.generate())
+            let table = []
+            const regen = () => {
+                table = []
+                generators.forEach(g => {
+                    g.generate()
+                    table.push({
+                        Entropy: g.templateEntropy + ' bits',
+                        Template: g.template,
+                        Result: g.parsedString
+                    })
+                })
+                console.table(table, [
+                    'Template',
+                    'Result',
+                    'Entropy'
+                ])
             }
+            button.onclick = regen
+            window.onload = regen
         </script>
     </body>
 </html>

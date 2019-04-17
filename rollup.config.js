@@ -41,23 +41,24 @@ export default [
             }
         ],
         plugins
-    },
-    {
-        context: 'window',
-        input: 'deps/parts of speech word files/wordlists.js',
-        output: [
-            {
-                file: 'dist/deps/parts of speech word files/wordlists.iife.js', // All in one file
-                format: 'iife',
-                name: 'wordlists'
-            },
-            {
-                file: 'dist/deps/parts of speech word files/wordlists.js', // All in one file
-                format: 'es',
-                name: 'wordlists'
-            }
-        ],
-        plugins
     }
+    // ,
+    // {
+    //     context: 'window',
+    //     input: 'deps/parts of speech word files/wordlists.js',
+    //     output: [
+    //         {
+    //             file: 'dist/deps/parts of speech word files/wordlists.iife.js', // All in one file
+    //             format: 'iife',
+    //             name: 'wordlists'
+    //         },
+    //         {
+    //             file: 'dist/deps/parts of speech word files/wordlists.js', // All in one file
+    //             format: 'es',
+    //             name: 'wordlists'
+    //         }
+    //     ],
+    //     plugins
+    // }
 
 ]

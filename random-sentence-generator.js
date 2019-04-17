@@ -2,8 +2,9 @@
 // Import the LitElement base class and html helper function
 'use strict'
 import { LitElement, html } from 'lit-element'
-import * as WORDLISTS from './deps/parts of speech word files/wordlists.js'
-
+// import * as WORDLISTS from './deps/parts of speech word files/wordlists.js'
+import * as WORDLISTS from './deps/wordlists/wordlists.js'
+console.log(WORDLISTS)
 // Extend the LitElement base class
 class RandomSentenceGenerator extends LitElement {
     /**
@@ -63,8 +64,8 @@ class RandomSentenceGenerator extends LitElement {
     }
 
     updated (changedProperties) {
-        console.log('changed properties')
-        console.log(changedProperties) // logs previous values
+        // console.log('changed properties')
+        // console.log(changedProperties) // logs previous values
         if (changedProperties.has('template')) {
             this.generate()
         }
@@ -110,7 +111,7 @@ class RandomSentenceGenerator extends LitElement {
         const index = this._RNG(requiredEntropy) * words.length
 
         return {
-            word: words[Math.floor(index)],
+            word: words[Math.round(index)],
             entropy: words.length
         }
     }
@@ -139,7 +140,7 @@ class RandomSentenceGenerator extends LitElement {
             return word
         })
         this.templateEntropy = Math.floor(Math.log(entropy) / Math.log(8))
-        console.log('parsing ' + template)
+        // console.log('parsing ' + template)
         return /* this.templateEntropy + ' - ' + */ final.join(' ')
     }
 

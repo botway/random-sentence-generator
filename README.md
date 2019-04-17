@@ -12,7 +12,7 @@ Just include the component and use it :)
 Or...
 ```html
 ...
-    <random-sentence-generator id="myRandSentence" template="adjective noun verb adverb."></random-sentence-generator>
+    <random-sentence-generator id="myRandSentence" template="adjective noun verbed adverb."></random-sentence-generator>
     <script type="module">
         import "random-sentence-generator.js"
         ...
@@ -27,6 +27,8 @@ Or...
  - interjection
  - adjective/adj
 Any of those keywords will be replaced with randomly generated words.
+
+`verb` is present tense by default, `verbed` converts it to past tense.
 
 ## Api
 Any time the template attribute is changed the sentence will be re-generated. A regeneration can also be triggered with

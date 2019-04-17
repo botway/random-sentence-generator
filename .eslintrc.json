@@ -13,5 +13,10 @@
         "es6": true,
         "browser": true,
         "worker": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     }
 }

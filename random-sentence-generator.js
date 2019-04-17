@@ -1,10 +1,8 @@
-'use strict'
-
-import * as WORDLISTS from './wordlists/wordlists.js'
+// import * as WORDLISTS from WORDLIST_URL
 // Import the LitElement base class and html helper function
+'use strict'
 import { LitElement, html } from 'lit-element'
-
-window.words = WORDLISTS
+import * as WORDLISTS from './deps/parts of speech word files/wordlists.js'
 
 // Extend the LitElement base class
 class RandomSentenceGenerator extends LitElement {
@@ -58,7 +56,8 @@ class RandomSentenceGenerator extends LitElement {
             'verb': 'verbs',
             'interjection': 'interjections',
             'adjective': 'adjectives',
-            'adj': 'adjectives'
+            'adj': 'adjectives',
+            'verbed': 'verbed'
         }
         this.partsOfSpeech = Object.keys(this.partsOfSpeechMap)
     }
@@ -139,9 +138,9 @@ class RandomSentenceGenerator extends LitElement {
             })
             return word
         })
-        this.templateEntropy = Math.log(entropy) / Math.log(8)
+        this.templateEntropy = Math.floor(Math.log(entropy) / Math.log(8))
         console.log('parsing ' + template)
-        return final.join(' ')
+        return /* this.templateEntropy + ' - ' + */ final.join(' ')
     }
 
     render () {
@@ -159,4 +158,4 @@ class RandomSentenceGenerator extends LitElement {
 // Register the new element with the browser.
 customElements.define('random-sentence-generator', RandomSentenceGenerator)
 
-export { RandomSentenceGenerator, WORDLISTS }
+export default RandomSentenceGenerator

@@ -4,11 +4,33 @@
 
     </head>
     <body>
-        <random-sentence-generator template-entropy="1" id="myRandSentence" template="adjective noun verb adverb."></random-sentence-generator>
+        <random-sentence-generator
+            template-entropy="1"
+            id="myRandSentence"
+            template="The adjective noun verbed the adjective noun adverb and the adjective noun verbed the adjective noun adverb."
+        ></random-sentence-generator>
         <br>
-        <random-sentence-generator template-entropy="1" template=""></random-sentence-generator>
+        <random-sentence-generator template-entropy="1" id="myRandSentence2"
+            template="adjective noun the noun verb adverb">
+        </random-sentence-generator>
         <br>
-        <random-sentence-generator template-entropy="1"></random-sentence-generator>
-        <script src="../dist/random-sentence-generator.iife.js"></script>
+        <random-sentence-generator
+            template-entropy="1"
+            id="myRandSentence3"
+            template="noun noun noun noun noun"
+        >
+        </random-sentence-generator>
+        <br>
+        <button id="button">Regenerate</button>
+        <br>
+        <!-- <script src="../dist/random-sentence-generator.iife.js"></script> -->
+        <script type="module" src="../dist/random-sentence-generator.es.js"></script>
+        <script>
+            const button = document.getElementById('button')
+            const generators = document.querySelectorAll('random-sentence-generator')
+            button.onclick = () => {
+                generators.forEach(g => g.generate())
+            }
+        </script>
     </body>
 </html>

@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import builtins from 'rollup-plugin-node-builtins'
 import globals from 'rollup-plugin-node-globals'
 import babel from 'rollup-plugin-babel'
+import { terser } from "rollup-plugin-terser"
 
 const plugins = [
     resolve({
@@ -19,9 +20,9 @@ const plugins = [
     // }),
     globals(),
     builtins(),
-    // babel({
-    //     exclude: 'node_modules/**'
-    // })
+    babel({
+        exclude: 'node_modules/**'
+    })
 ]
 
 export default [
@@ -41,6 +42,23 @@ export default [
             }
         ],
         plugins
+    },
+    {
+        context: 'window',
+        input: 'random-sentence-generator.js',
+        output: [
+            {
+                file: 'dist/random-sentence-generator.iife.min.js', // All in one file
+                format: 'iife',
+                name: 'RandomSentenceGenerator'
+            },
+            {
+                file: 'dist/random-sentence-generator.es.min.js', // All in one file
+                format: 'es',
+                name: 'RandomSentenceGenerator'
+            }
+        ],
+        plugins: plugins.concat([terser()])
     }
     // ,
     // {

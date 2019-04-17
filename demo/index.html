@@ -42,6 +42,7 @@
         <!-- <script src="../dist/random-sentence-generator.iife.js"></script> -->
         <script type="module" src="../dist/random-sentence-generator.es.js"></script>
         <script>
+            const all = []
             const button = document.getElementById('button')
             const generators = document.querySelectorAll('random-sentence-generator')
             let table = []
@@ -56,6 +57,7 @@
                         'Max length': g.maxWordLength
                     })
                 })
+                all.push(...table)
                 console.table(table)
             }
             button.onclick = regen

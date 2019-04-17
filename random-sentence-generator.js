@@ -3,7 +3,8 @@
 'use strict'
 import { LitElement, html } from 'lit-element'
 // import * as WORDLISTS from './deps/parts of speech word files/wordlists.js'
-import * as WORDLISTS from './deps/wordlists/wordlists.js'
+// import * as WORDLISTS from './deps/wordlists/wordlists.js'
+import * as WORDLISTS from './deps/wordlists/wordlists6.js' // save 100kb by only using 6 letter words and less
 console.log(WORDLISTS)
 // Extend the LitElement base class
 class RandomSentenceGenerator extends LitElement {

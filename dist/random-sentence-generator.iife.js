@@ -2320,6 +2320,10 @@ var RandomSentenceGenerator = (function () {
                     type: Number,
                     reflect: true,
                     attribute: 'template-entropy'
+                },
+                maxWordLength: {
+                    type: Number,
+                    attribute: 'max-word-length'
                 }
             }
         }
@@ -2329,6 +2333,7 @@ var RandomSentenceGenerator = (function () {
 
             // Properties
             this.template = 'adjective noun verb adverb.';
+            this.maxWordLength = 0; // disabled
             this.parsedString = '';
             this.fetchedWordlistCount = 0;
             this.capitalize = true;
@@ -2343,14 +2348,31 @@ var RandomSentenceGenerator = (function () {
                 'verbed': 'verbed'
             };
             this.partsOfSpeech = Object.keys(this.partsOfSpeechMap);
+            this._wordlists = WORDLISTS;
         }
 
         updated (changedProperties) {
             // console.log('changed properties')
             // console.log(changedProperties) // logs previous values
+            let regen = false;
             if (changedProperties.has('template')) {
-                this.generate();
+                regen = true;
             }
+            if (changedProperties.has('maxWordLength')) {
+                console.dir(this.maxWordLength);
+                if (this.maxWordLength) {
+                    const wl = {...this._wordlists};
+                    for (const partOfSpeech in this._wordlists) {
+                        console.log(this._wordlists[partOfSpeech]);
+                        if (Array.isArray(this._wordlists[partOfSpeech])) {
+                            wl[partOfSpeech] = this._wordlists[partOfSpeech].filter(word => word.length <= this.maxWordLength);
+                        }
+                    }
+                    this._wordlists = wl;
+                }
+                regen = true;
+            }
+            if (regen) this.generate();
             // if (changedProperties.has('templateEntropy')) {
             //     this.
             // }
@@ -2388,7 +2410,7 @@ var RandomSentenceGenerator = (function () {
         }
 
         getWord (partOfSpeech) {
-            const words = WORDLISTS[this.partsOfSpeechMap[partOfSpeech]];
+            const words = this._wordlists[this.partsOfSpeechMap[partOfSpeech]];
             const requiredEntropy = Math.log(words.length) / Math.log(2);
             const index = this._RNG(requiredEntropy) * words.length;
 

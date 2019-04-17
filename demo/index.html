@@ -4,7 +4,7 @@
 
     </head>
     <body>
-        <random-sentence-generator
+        <!-- <random-sentence-generator
             template-entropy="1"
             id="myRandSentence"
             template="The adjective noun verbed the adjective noun adverb and the adjective noun verbed the adjective noun adverb."
@@ -19,12 +19,21 @@
             id="myRandSentence3"
             template="noun noun noun noun noun"
         >
-        </random-sentence-generator>
+        </random-sentence-generator> -->
         <br>
                 <random-sentence-generator
             template-entropy="1"
             id="myRandSentence4"
-            template="Verb the adjective noun adverb and verb the adjective noun"
+            template="adverb verb the adjective noun and verb the adjective noun with a noun"
+            max-word-length="0"
+        >
+        </random-sentence-generator>
+        <br>
+        <random-sentence-generator
+            template-entropy="1"
+            id="myRandSentence5"
+            template="adverb verb the adjective noun and verb the adjective noun with the adjective noun"
+            max-word-length="6"
         >
         </random-sentence-generator>
         <br>
@@ -43,14 +52,11 @@
                     table.push({
                         Entropy: g.templateEntropy + ' bits',
                         Template: g.template,
-                        Result: g.parsedString
+                        Result: g.parsedString,
+                        'Max length': g.maxWordLength
                     })
                 })
-                console.table(table, [
-                    'Template',
-                    'Result',
-                    'Entropy'
-                ])
+                console.table(table)
             }
             button.onclick = regen
             window.onload = regen

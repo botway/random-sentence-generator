@@ -1,6 +1,6 @@
 {
     "name": "random-sentence-generator",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "main": "dist/cjs/random-sentence-generator.js",
     "module": "random-sentence-generator",
     "browser": "dist/es5/random-sentence-generator.js",

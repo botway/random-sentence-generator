@@ -39,4 +39,6 @@ document.getElementById('myRandSentence').generate()
 ## Development
 Lint with `npm run lint` - uses eslint with standardjs preset
 
-Build with `npm run build` or `npm run watch`. Builds with rollup.
+Build with `npm run build` or `npm run watch`. Builds with rollup
+
+

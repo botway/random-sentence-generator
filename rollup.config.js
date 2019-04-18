@@ -31,18 +31,18 @@ export default [
         ],
         plugins: plugins.concat([babel(babelConfig)])
     },
-    {
-        context: 'window',
-        input: 'random-sentence-generator.js',
-        output: [
-            {
-                dir: 'dist/cjs',
-                format: 'cjs',
-                name: 'RandomSentenceGenerator'
-            }
-        ],
-        plugins: plugins.concat([babel(babelConfig)])
-    },
+    // {
+    //     context: 'window',
+    //     input: 'random-sentence-generator.js',
+    //     output: [
+    //         {
+    //             dir: 'dist/cjs',
+    //             format: 'cjs',
+    //             name: 'RandomSentenceGenerator'
+    //         }
+    //     ],
+    //     plugins: plugins.concat([babel(babelConfig)])
+    // },
     {
         context: 'window',
         input: 'random-sentence-generator.js',

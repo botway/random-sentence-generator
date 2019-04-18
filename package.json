@@ -1,6 +1,6 @@
 {
     "name": "random-sentence-generator",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "main": "random-sentence-generator.js",
     "browser": "dist/random-sentence-generator.iife.js",
     "repository": "https://github.com/irontiga/random-sentence-generator.git",

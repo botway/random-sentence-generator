@@ -1,13 +1,14 @@
 {
     "name": "random-sentence-generator",
     "version": "0.0.5",
-    "main": "random-sentence-generator.js",
-    "browser": "dist/random-sentence-generator.iife.js",
+    "main": "dist/cjs/random-sentence-generator.js",
+    "module": "random-sentence-generator",
+    "browser": "dist/es5/random-sentence-generator.js",
     "repository": "https://github.com/irontiga/random-sentence-generator.git",
     "author": "irontiga <irontiga@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "build": "rollup -c",
+        "build": "rollup -c --mode=PRODUCTION --environment=PRODUCTION",
         "watch": "rollup -c --watch",
         "lint": "eslint random-sentence-generator.js"
     },

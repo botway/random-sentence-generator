@@ -1,5 +1,8 @@
-var RandomSentenceGenerator = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.RandomSentenceGenerator = factory());
+}(this, function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -2973,4 +2976,4 @@ var RandomSentenceGenerator = (function () {
 
   return RandomSentenceGenerator;
 
-}());
+}));
